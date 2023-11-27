@@ -1,0 +1,72 @@
+@import '../../../../styles/helpers/variables';
+
+.item {
+    width: 240px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    padding: 14px 22px 14px 12px;
+    gap: 12px;
+    color: rgb(255 255 255 / 60%);
+    text-decoration: none;
+    position: relative;
+
+    svg {
+        fill: rgb(255 255 255 / 60%);
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        right: 12px;
+        top: 22px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: transparent;
+    }
+
+    &_isNew {
+        &::after {
+            background-color: $yellow-color;
+            box-shadow: 0 3px 8px rgb(237 218 1 / 50%);
+        }
+    }
+
+    &_active {
+        color: rgb(255 255 255);
+        background-color: rgb(216 228 251 / 32%);
+        transition: all 0.2s ease-in;
+
+        & svg {
+            fill: rgb(255 255 255);
+        }
+
+        &::before {
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 52px;
+            background-color: $blue-color;
+        }
+    }
+
+    &:hover {
+        color: rgb(255 255 255);
+        background-color: rgb(216 228 251 / 32%);
+        transition: all 0.2s ease-in;
+
+        & svg {
+            fill: rgb(255 255 255);
+        }
+    }
+}
+
+.name {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}

@@ -1,0 +1,31 @@
+@import '../../../styles/helpers/variables';
+
+.button {
+    width: 200px;
+    min-height: 52px;
+    padding: 13px 61px 14px 24px;
+    border: none;
+    border-radius: 4px;
+    background: $blue-color;
+    color: $font-color-white;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+        background: $blue-color-hover;
+    }
+
+    &:active {
+        background: $blue-color-active;
+    }
+}
+
+.icon {
+    position: absolute;
+    content: '';
+    top: calc(50% - 12px);
+    right: 20px;
+}

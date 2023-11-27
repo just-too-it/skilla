@@ -1,0 +1,9 @@
+@import 'styles/helpers/variables';
+
+.layout {
+    max-width: 1920px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
