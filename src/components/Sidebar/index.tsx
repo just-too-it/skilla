@@ -6,8 +6,8 @@ import { MenuItemType } from 'components/Sidebar/Menu/MenuItem/MenuItem.types';
 import { Logo } from 'components/ui/Logo';
 import { Link } from 'react-router-dom';
 import { Button } from 'components/ui/Button';
-import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg';
-import { ReactComponent as AlertIcon } from '../../assets/icons/plus.svg';
+import { ReactComponent as PlusIcon } from 'assets/icons/plus.svg';
+import { ReactComponent as AlertIcon } from 'assets/icons/plus.svg';
 
 interface SidebarProps {
   menu: MenuItemType[];

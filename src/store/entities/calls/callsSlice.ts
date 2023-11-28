@@ -4,13 +4,13 @@ import { Call, CallResponse } from 'services/calls/calls.model';
 import { getCalls } from 'store/action-creators/calls';
 
 export interface CallsState {
-  calls: Call[];
+  data: Call[];
   status: 'loading' | 'success' | 'error';
   error: string;
 }
 
 const initialState: CallsState = {
-  calls: [],
+  data: [],
   status: 'loading',
   error: '',
 };
@@ -21,14 +21,14 @@ export const callsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getCalls.fulfilled, (state, action: PayloadAction<CallResponse>) => {
-      state.calls = action.payload.results;
+      state.data = action.payload.results;
       state.status = 'success';
     });
     builder.addCase(getCalls.pending, (state) => {
       state.status = 'loading';
     });
     builder.addCase(getCalls.rejected, (state, action: PayloadAction<any>) => {
-      state.calls = [];
+      state.data = [];
       state.status = 'error';
       state.error = action.payload;
     });
