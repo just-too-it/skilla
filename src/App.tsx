@@ -1,12 +1,11 @@
 import React from 'react';
+
 import { Calls } from 'pages/Calls';
 
-function App() {
+export const App = () => {
   return (
     <div className="App">
-      <Calls/>
+      <Calls />
     </div>
   );
-}
-
-export default App;
+};

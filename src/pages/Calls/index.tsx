@@ -1,34 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 
-import { Layout } from 'components/Layout/';
-
-import styles from './Calls.module.scss';
+import { Layout } from 'components/Layout';
 import { CallTable } from 'components/CallTable';
 import { RootState } from 'store/store';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { getCalls } from 'store/action-creators/calls';
+import { Filters } from 'components/Filters';
+
+import styles from './Calls.module.scss';
 
 export const Calls = () => {
   const calls = useAppSelector((state: RootState) => state.calls.data);
   const dispatch = useAppDispatch();
 
+  const { params } = useAppSelector((state) => state.calls);
+
+  const callsData = useMemo(
+    () => ({
+      in_out: params.callType === 'all' ? null : params.callType === 'incoming' ? 1 : 0,
+      date_start: params.dateStart,
+      date_end: params.dateEnd,
+    }),
+    [params]
+  );
+
   useEffect(() => {
-    dispatch(
-      getCalls({
-        date_start: new Date('2021-09-01'),
-        date_end: new Date('2022-09-03'),
-        in_out: 1,
-      })
-    );
-  }, [dispatch]);
-  
+    dispatch(getCalls(callsData));
+  }, [callsData, dispatch]);
+
   return (
     <Layout>
       <div className={styles.page}>
-        {
-          calls.length > 0 ? <CallTable calls={calls}/> : 'Calls not found'
-        }
-        
+        <Filters />
+        <CallTable calls={calls} />
       </div>
     </Layout>
   );

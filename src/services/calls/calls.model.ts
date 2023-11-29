@@ -15,3 +15,7 @@ export interface CallResponse {
   total_rows: number;
   results: Call[];
 }
+
+export interface RecordResponse {
+  record: any
+}
