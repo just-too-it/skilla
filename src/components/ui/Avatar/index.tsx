@@ -22,4 +22,3 @@ export const Avatar: FC<AvatarProps> = ({ img, name, width, height }) => {
     </div>
   );
 };
-
